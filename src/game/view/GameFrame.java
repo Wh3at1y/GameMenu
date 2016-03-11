@@ -14,11 +14,9 @@ public class GameFrame extends JFrame
 		private void buildFrame()
 		{
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			this.setResizable(false);
-			this.setTitle("Guessing Game");
 			this.setContentPane(basePanel);
-			this.pack();
-			this.setSize(600,500);
+			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			this.setUndecorated(true);
 			this.setVisible(true);
 		}
 	}
