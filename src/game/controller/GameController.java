@@ -24,7 +24,7 @@ public class GameController
 		{
 		    try 
 		    {
-		        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("resources/song.wav").getAbsoluteFile());
+		        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/song.wav").getAbsoluteFile());
 		        Clip clip = AudioSystem.getClip();
 		        clip.open(audioInputStream);
 		        clip.start();
