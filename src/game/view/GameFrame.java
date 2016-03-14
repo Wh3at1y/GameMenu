@@ -18,8 +18,7 @@ public class GameFrame extends JFrame
 		{
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setContentPane(basePanel);
-			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			this.setUndecorated(true);
+			this.setSize(1500,900);
 			this.setVisible(true);
 		}
 		

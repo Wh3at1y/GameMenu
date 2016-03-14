@@ -11,24 +11,27 @@ public class GamePanel extends JPanel
 	private MainMenu mainMenu;
 	private OptionsMenu optionsMenu;
 	private JLabel backgroundImage;
+	private JLabel logo;
 	
 	public GamePanel(GameController baseController)
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
-		backgroundImage = new JLabel();
-		backgroundImage.setIcon(new ImageIcon(MainMenu.class.getResource("/colorwave.gif")));
+		
 		mainMenu = new MainMenu(baseController);
 		optionsMenu = new OptionsMenu(baseController);
-		baseLayout.putConstraint(SpringLayout.NORTH, optionsMenu, 0, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, optionsMenu, 0, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, optionsMenu, 0, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, optionsMenu, 0, SpringLayout.EAST, this);
-		optionsMenu.setVisible(false);
+		backgroundImage = new JLabel();
+		logo = new JLabel();
 		
+		setIcons();
 		buildPanel();
 		buildPlacements();
 		buildListeners();
+	}
+	private void setIcons()
+	{
+		backgroundImage.setIcon(new ImageIcon(MainMenu.class.getResource("/colorwave.gif")));
+		logo.setIcon(new ImageIcon(GamePanel.class.getResource("/logo.png")));
 	}
 	
 	private void buildPanel()
@@ -37,6 +40,7 @@ public class GamePanel extends JPanel
 		
 		add(mainMenu);
 		add(optionsMenu);
+		add(logo);
 		add(backgroundImage);
 	}
 	
@@ -46,6 +50,12 @@ public class GamePanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, mainMenu, 0, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, mainMenu, 0, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, mainMenu, 0, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, optionsMenu, 0, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, optionsMenu, 0, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, optionsMenu, 0, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, optionsMenu, 0, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, logo, 0, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, logo, 67, SpringLayout.WEST, this);
 	}
 	
 	private void buildListeners()

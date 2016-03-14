@@ -21,6 +21,7 @@ public class MainMenu extends JPanel
 	private JLabel loadButton;
 	private JLabel optionsButton;
 	private JLabel exitButton;
+	private JLabel showUserName;
 
 	public MainMenu(GameController baseController)
 	{
@@ -31,6 +32,7 @@ public class MainMenu extends JPanel
 		loadButton = new JLabel("Load Save");
 		optionsButton = new JLabel("Options");
 		exitButton = new JLabel("Exit Game");
+		showUserName = new JLabel("Username: " );
 
 		startButton.setFont(new Font("Courier New", Font.BOLD, 20));
 		startButton.setEnabled(false);
@@ -48,6 +50,9 @@ public class MainMenu extends JPanel
 		exitButton.setForeground(Color.WHITE);
 		exitButton.setEnabled(false);
 		
+		showUserName.setFont(new Font("Courier New", Font.BOLD, 20));
+		showUserName.setForeground(Color.WHITE);
+		
 		this.setOpaque(false);
 		
 		buildPanel();
@@ -63,6 +68,7 @@ public class MainMenu extends JPanel
 		add(loadButton);
 		add(optionsButton);
 		add(exitButton);
+		add(showUserName);
 	}
 
 	private void buildWindow()
@@ -75,6 +81,8 @@ public class MainMenu extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, optionsButton, 0, SpringLayout.WEST, startButton);
 		baseLayout.putConstraint(SpringLayout.NORTH, loadButton, 18, SpringLayout.SOUTH, startButton);
 		baseLayout.putConstraint(SpringLayout.WEST, loadButton, 0, SpringLayout.WEST, startButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, showUserName, 46, SpringLayout.SOUTH, exitButton);
+		baseLayout.putConstraint(SpringLayout.WEST, showUserName, 0, SpringLayout.WEST, startButton);
 	}
 
 	private void buildListeners()
@@ -93,5 +101,10 @@ public class MainMenu extends JPanel
 	public JLabel getOptionsButton()
 	{
 		return optionsButton;
+	}
+	
+	public void setUserNameText(String updatedUserName)
+	{
+		showUserName.setText("Username: " + updatedUserName);
 	}
 }
