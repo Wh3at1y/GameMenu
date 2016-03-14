@@ -1,5 +1,8 @@
 package game.view;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.*;
 
 import game.controller.GameController;
@@ -8,13 +11,17 @@ public class OptionsMenu extends JPanel
 {
 	private GameController baseController;
 	private SpringLayout baseLayout;
-	private JLabel ok;
+	private JLabel backButton;
 	
-	public OptionsMenu()
+	public OptionsMenu(GameController baseController)
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
-		ok = new JLabel("OKOK");
+		backButton = new JLabel("Back");
+		backButton.setFont(new Font("Courier New", Font.BOLD, 20));
+		backButton.setEnabled(false);
+		backButton.setForeground(Color.WHITE);
+		this.setOpaque(false);
 		
 		buildPanel();
 		buildPlacements();
@@ -24,7 +31,7 @@ public class OptionsMenu extends JPanel
 	private void buildPanel()
 	{
 		setLayout(baseLayout);
-		add(ok);
+		add(backButton);
 	}
 	
 	private void buildPlacements()
@@ -33,6 +40,11 @@ public class OptionsMenu extends JPanel
 	
 	private void buildListeners()
 	{
-		
+		baseController.buttonListener(backButton);
+	}
+	
+	public JLabel getBackButton()
+	{
+		return backButton;
 	}
 }

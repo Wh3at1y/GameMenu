@@ -1,7 +1,6 @@
 package game.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,17 +11,21 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 
+import game.controller.GameController;
+
 public class MainMenu extends JPanel
 {
+	private GameController baseController;
 	private SpringLayout baseLayout;
 	private JLabel startButton;
 	private JLabel loadButton;
 	private JLabel optionsButton;
 	private JLabel exitButton;
-	private JLabel ok;
 
-	public MainMenu()
+	public MainMenu(GameController baseController)
 	{
+		this.baseController = baseController;
+		
 		baseLayout = new SpringLayout();
 		startButton = new JLabel("Start Game");
 		loadButton = new JLabel("Load Save");
@@ -45,9 +48,8 @@ public class MainMenu extends JPanel
 		exitButton.setForeground(Color.WHITE);
 		exitButton.setEnabled(false);
 		
-		ok = new JLabel("adwlkadlakwjdlakwjdlakdj");
-		ok.setFont(new Font("Courier New", Font.BOLD, 20));
-		ok.setVisible(false);
+		this.setOpaque(false);
+		
 		buildPanel();
 		buildWindow();
 		buildListeners();
@@ -61,7 +63,6 @@ public class MainMenu extends JPanel
 		add(loadButton);
 		add(optionsButton);
 		add(exitButton);
-		add(ok);
 	}
 
 	private void buildWindow()
@@ -78,81 +79,19 @@ public class MainMenu extends JPanel
 
 	private void buildListeners()
 	{
-		test(startButton);
-		test(loadButton);
-		test(optionsButton);
-		test(exitButton);
+		baseController.buttonListener(startButton);
+		baseController.buttonListener(loadButton);
+		baseController.buttonListener(optionsButton);
+		baseController.buttonListener(exitButton);
 	}
-
-	private void test(JLabel button)
+	
+	public JLabel getExitButton()
 	{
-		button.addMouseListener(new MouseListener()
-		{
-			public void mouseClicked(MouseEvent e)
-			{	
-				try 
-			    {
-			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\Wh3at\\Downloads\\buttonClick.wav").getAbsoluteFile());
-			        Clip clip = AudioSystem.getClip();
-			        clip.open(audioInputStream);
-			        clip.start();
-			    } 
-			    catch(Exception ex) 
-			    {
-			        System.out.println("Error with playing sound.");
-			        ex.printStackTrace();
-			    }
-				
-				System.out.println("clicked start");
-				if (button == exitButton)
-				{
-					System.exit(0);
-				}
-				else
-				{
-					setVisible(false);
-				}
-			}
-
-			public void mousePressed(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			public void mouseEntered(MouseEvent e)
-			{
-				try 
-			    {
-			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\Wh3at\\Downloads\\click.wav").getAbsoluteFile());
-			        Clip clip = AudioSystem.getClip();
-			        clip.open(audioInputStream);
-			        clip.start();
-			    } 
-			    catch(Exception ex) 
-			    {
-			        System.out.println("Error with playing sound.");
-			        ex.printStackTrace();
-			    }
-				
-				button.setEnabled(true);
-				button.setEnabled(true);
-
-			}
-
-			public void mouseExited(MouseEvent e)
-			{
-				button.setEnabled(false);
-				button.setEnabled(false);
-
-			}
-
-		});
+		return exitButton;
+	}
+	
+	public JLabel getOptionsButton()
+	{
+		return optionsButton;
 	}
 }

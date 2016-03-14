@@ -2,12 +2,15 @@ package game.view;
 
 import javax.swing.JFrame;
 
+import game.controller.GameController;
+
 public class GameFrame extends JFrame
 	{
 		private GamePanel basePanel;
-		public GameFrame()
+		
+		public GameFrame(GameController baseController)
 		{
-			basePanel = new GamePanel();
+			basePanel = new GamePanel(baseController);
 			buildFrame();
 		}
 		
@@ -18,5 +21,10 @@ public class GameFrame extends JFrame
 			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			this.setUndecorated(true);
 			this.setVisible(true);
+		}
+		
+		public GamePanel getGamePanel()
+		{
+			return basePanel;
 		}
 	}
