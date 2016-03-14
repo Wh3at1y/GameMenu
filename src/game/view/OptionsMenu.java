@@ -26,6 +26,7 @@ public class OptionsMenu extends JPanel
 		baseLayout = new SpringLayout();
 		
 		backButton = new JLabel("Back");
+		baseLayout.putConstraint(SpringLayout.WEST, backButton, 129, SpringLayout.WEST, this);
 		backButton.setFont(new Font("Courier New", Font.BOLD, 20));
 		backButton.setEnabled(false);
 		backButton.setForeground(Color.WHITE);
@@ -69,17 +70,15 @@ public class OptionsMenu extends JPanel
 	
 	private void buildPlacements()
 	{
-		baseLayout.putConstraint(SpringLayout.NORTH, backButton, 28, SpringLayout.SOUTH, toggleMusicButton);
-		baseLayout.putConstraint(SpringLayout.NORTH, toggleMusicButton, 19, SpringLayout.SOUTH, toggleClicksButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, toggleMusicButton, -513, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, backButton, 21, SpringLayout.SOUTH, toggleMusicButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, toggleClicksButton, -20, SpringLayout.NORTH, toggleMusicButton);
 		baseLayout.putConstraint(SpringLayout.WEST, toggleMusicButton, 0, SpringLayout.WEST, backButton);
-		baseLayout.putConstraint(SpringLayout.NORTH, toggleClicksButton, 18, SpringLayout.SOUTH, enterUserName);
-		baseLayout.putConstraint(SpringLayout.WEST, toggleClicksButton, 0, SpringLayout.WEST, backButton);
-		baseLayout.putConstraint(SpringLayout.WEST, enterUserName, 16, SpringLayout.EAST, changeUserNameButton);
-		baseLayout.putConstraint(SpringLayout.SOUTH, enterUserName, -749, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, enterUserName, -1016, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, changeUserNameButton, 2, SpringLayout.NORTH, enterUserName);
-		baseLayout.putConstraint(SpringLayout.WEST, changeUserNameButton, 0, SpringLayout.WEST, backButton);
-		baseLayout.putConstraint(SpringLayout.WEST, backButton, 129, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, changeUserNameButton, -24, SpringLayout.NORTH, toggleClicksButton);
+		baseLayout.putConstraint(SpringLayout.WEST, toggleClicksButton, 129, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, enterUserName, 3, SpringLayout.NORTH, changeUserNameButton);
+		baseLayout.putConstraint(SpringLayout.WEST, enterUserName, 10, SpringLayout.EAST, changeUserNameButton);
+		baseLayout.putConstraint(SpringLayout.EAST, enterUserName, 190, SpringLayout.EAST, changeUserNameButton);
 	}
 	
 	private void buildListeners()
