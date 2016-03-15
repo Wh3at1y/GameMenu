@@ -29,7 +29,7 @@ public class MainMenu extends JPanel
 		
 		baseLayout = new SpringLayout();
 		startButton = new JLabel("Start Game");
-		loadButton = new JLabel("Load Save");
+		loadButton = new JLabel("Load Profile");
 		optionsButton = new JLabel("Options");
 		exitButton = new JLabel("Exit Game");
 		showUserName = new JLabel("Username: " );

@@ -1,5 +1,8 @@
 package game.view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 import game.controller.GameController;
@@ -18,8 +21,7 @@ public class GameFrame extends JFrame
 		{
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setContentPane(basePanel);
-			pack();
-			this.setSize(1500,900);
+			setSize(1200,700);
 			this.setVisible(true);
 		}
 		
